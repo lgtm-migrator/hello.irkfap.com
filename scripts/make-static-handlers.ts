@@ -56,6 +56,7 @@ const ROUTE_FLAGS: RouteFlagsType = {
   '*.ttf': 'font/ttf',
   '*.woff': 'font/woff',
   '*.woff2': 'font/woff2',
+  '*.html': 'text/html',
 };
 
 const IGNORE_FILES = ['**/.DS_Store', '**/LICENSE.txt', '**/config.json'];
