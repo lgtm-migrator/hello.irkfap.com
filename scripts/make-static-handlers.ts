@@ -36,7 +36,7 @@ interface DynamicRouteType extends RouteType {
 }
 
 const backendRoute: DynamicRouteType = {
-  url: '/.*',
+  url: '.*',
   secure: 'always',
   redirect_http_response_code: 301,
   script: 'auto',
@@ -56,7 +56,6 @@ const ROUTE_FLAGS: RouteFlagsType = {
   '*.ttf': 'font/ttf',
   '*.woff': 'font/woff',
   '*.woff2': 'font/woff2',
-  '*.html': 'text/html',
 };
 
 const IGNORE_FILES = ['**/.DS_Store', '**/LICENSE.txt', '**/config.json'];
@@ -83,8 +82,10 @@ const createRoute = (relPath: string, expand?: boolean): StaticRouteType => {
     }
   }
 
+  const url = relPath.replace(/(index.html?)$/, '');
+
   return {
-    url: `/${relPath}`,
+    url: `/${url}`,
     static_files: `public/${relPath}`,
     upload: `public/${relPath}`,
     secure: 'always',
