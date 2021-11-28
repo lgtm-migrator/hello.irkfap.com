@@ -1,0 +1,37 @@
+name: gcloud-cleanup
+
+env:
+  GCLOUD_PROJECT_ID: irkfap-com
+
+on:
+  schedule:
+    # At 00:00 every Sunday
+    - cron:  '0 0 * * 0'
+  workflow_dispatch:
+    branches:
+      - main-kampf
+
+jobs:
+
+  clean-up:
+    name: Clean-up old artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Import Service Account key
+        run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | base64 -d > /tmp/auth.json
+
+      - name: GCloud Auth
+        run: |
+          gcloud --quiet auth \
+          activate-service-account "${{ secrets.GCP_SA_EMAIL }}" \
+          --key-file=/tmp/auth.json \
+          --project="${GCLOUD_PROJECT_ID}"
+
+      # Get versions without traffic, sort by last deployed desc
+      # Skip output header along with two last deployed versions (tail -n +4 skips **3** lines)
+      # Delete remaining
+      - name: Delete old versions
+        run: |
+          LIST=($(gcloud app versions list --service=default --sort-by="~LAST_DEPLOYED" --filter="TRAFFIC_SPLIT=0" | awk '{ print $2 }' | tail -n +4))
+          gcloud --quiet app versions delete --service=default "${LIST[@]:-''}"
