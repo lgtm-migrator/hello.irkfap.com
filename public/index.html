@@ -59,7 +59,7 @@ _      __     ___     _    _        ______  _____     ___
     body {
       background-color: white;
       margin: 0;
-      display: grid;
+      display: table;
     }
     h1,h2,h3,h4,h5,h6 {
       font-family: 'Bellota Text', cursive;
@@ -67,10 +67,18 @@ _      __     ___     _    _        ______  _____     ___
     #EHLO {
       width: 100%;
       margin: auto;
+      /*overflow: hidden;*/
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
     }
     #EHLO svg, #EHLO img {
       object-fit: contain;
       width: 100%;
+    }
+
+    #EHLO svg {
+      all: unset;
     }
   </style>
 
@@ -98,6 +106,28 @@ _      __     ___     _    _        ______  _____     ___
     </svg>
   </div>
 
+  <script>
+    // SVG filters support
+    // https://github.com/Modernizr/Modernizr/pull/531
+    function isSvgFilterSupported() {
+      var result = false;
+      try {
+        result = typeof SVGFEColorMatrixElement !== undefined &&
+          SVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_SATURATE==2;
+      }
+      catch(e) {}
+      return result;
+    }
+
+    if (!isSvgFilterSupported()) {
+      var ehlo = document.getElementById('EHLO');
+      ehlo.className = 'no-svg-filters';
+      var img = document.createElement('img');
+      img.src = 'img/hello.png';
+      img.alt = 'hello ☭ irkfap · com';
+      ehlo.replaceChild(img, ehlo.getElementsByTagName('svg')[0]);
+    }
+  </script>
 
 
 
