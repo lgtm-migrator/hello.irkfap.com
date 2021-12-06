@@ -111,15 +111,14 @@ _      __     ___     _    _        ______  _____     ___
   </div>
 
   <script>
-    // SVG filters support
+    // Check for support: SVG filter feBlend with mode="difference"
     // https://github.com/Modernizr/Modernizr/pull/531
     function isSvgFilterSupported() {
       var result = false;
       try {
-        result = typeof SVGFEColorMatrixElement !== undefined &&
-          SVGFEColorMatrixElement.SVG_FECOLORMATRIX_TYPE_SATURATE==2;
-      }
-      catch(e) {}
+        result = typeof SVGFEBlendElement !== undefined &&
+          SVGFEBlendElement.SVG_FEBLEND_MODE_DIFFERENCE !== undefined;
+      } catch(e) {}
       return result;
     }
 
