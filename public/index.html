@@ -56,8 +56,6 @@ _      __     ___     _    _        ______  _____     ___
       width: 100%;
       height: 100%;
       font-family: 'Raleway', sans-serif;
-
-      background-color: white;
     }
     body {
       background-color: white;
@@ -69,13 +67,9 @@ _      __     ___     _    _        ______  _____     ___
     }
     #EHLO {
       width: 100%;
-      /*margin: auto;*/
-      /*overflow: hidden;*/
       display: table-cell;
       text-align: center;
       vertical-align: middle;
-
-      background: rgb(255, 255, 255);
     }
     #EHLO svg, #EHLO img {
       object-fit: contain;
@@ -132,37 +126,21 @@ _      __     ___     _    _        ______  _____     ___
       /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);*/
     }
 
-    .wrapper {
-      /*margin: auto;*/
-      height: 25vw;
-      font-size: 1vw;
-
-      top: 5.5em;
-
-      position: relative;
-    }
-
     .ehlo {
-      width: 100%;
-      margin: 0;
+      margin: 0.4em auto 0.7em auto;
       font-family: 'Outfit', sans-serif;
       font-weight: 300;
-      font-size: 11.18em;
-      text-align: center;
-      line-height: 1em;
+      font-size: 11.18vw;
 
       color: red;
 
-      display: block;
-      position: absolute;
-
       font-kerning: normal;
+      overflow: hidden;
     }
     .ehlo .font-icon {
       font-size: 0.6375em; /* 76.5pt / 120pt */
       margin-left: .1em;
       margin-right: .1em;
-      /*margin-right: .17em;*/
       /* emulate negative baseline-shift */
       position: relative;
       top: -0.02em;
@@ -176,7 +154,10 @@ _      __     ___     _    _        ______  _____     ___
               user-select: none;
       mix-blend-mode: difference;
 
-      /*left: -0.07em;*/
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      right: 0;
     }
 
     .blend .left {
@@ -190,12 +171,11 @@ _      __     ___     _    _        ______  _____     ___
 
     .invisible {
       visibility: hidden;
-      /*margin-right: .04em;*/
     }
 
     @supports (font-variation-settings: 'wght' 280) {
       .ehlo {
-        font-size: 11.2em;
+        font-size: 11.2vw;
         font-weight: 280;
       }
       .blend .left {
@@ -222,17 +202,15 @@ _      __     ___     _    _        ______  _____     ___
 
   <div id="EHLO">
 
-    <div class="wrapper">
-      <h1 class="ehlo">
-        hello<i class="font-icon">&#xe800;</i>irkfap.com
-      </h1>
-      <div class="ehlo blend">
+    <h1 class="ehlo">
+      hello<i class="font-icon" aria-label="at">&#xe800;</i>irkfap.com
+      <div class="blend" aria-hidden="true">
         <span class="left">hello</span><span class="invisible">@</span><span class="right">irkfap.com</span>
       </div>
-    </div>
+    </h1>
 
     <h2>
-      Follow us on Twitter: <a href="https://twitter.com/irkfap"><i class="font-icon">&#xe800;</i>irkfap</a>
+      Follow us on <!--i class="font-icon">&#xf099;</i-->Twitter: <a href="https://twitter.com/irkfap"><i class="font-icon">&#xe800;</i>irkfap</a>
     </h2>
   </div>
 
