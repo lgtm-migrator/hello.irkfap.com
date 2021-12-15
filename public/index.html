@@ -69,7 +69,7 @@ _      __     ___     _    _        ______  _____     ___
     }
     #EHLO {
       width: 100%;
-      margin: auto;
+      /*margin: auto;*/
       /*overflow: hidden;*/
       display: table-cell;
       text-align: center;
@@ -134,17 +134,29 @@ _      __     ___     _    _        ______  _____     ___
       /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3);*/
     }
 
+    .wrapper {
+      /*margin: auto;*/
+      height: 25vw;
+      font-size: 1vw;
+
+      top: 5.5em;
+
+      position: relative;
+    }
+
     .ehlo {
+      width: 100%;
       margin: 0;
       font-family: 'Outfit', sans-serif;
       font-weight: 300;
-      font-size: 120pt;
+      font-size: 11em;
+      text-align: center;
       line-height: 1em;
 
       color: red;
 
       display: block;
-
+      position: absolute;
 
       will-change: opacity;
       transform: translateZ(0);
@@ -159,8 +171,6 @@ _      __     ___     _    _        ______  _____     ___
     }
 
     .ehlo.blend {
-      position: relative;
-      top: -120pt;
       left: -0.07em;
       mix-blend-mode: difference;
     }
@@ -184,12 +194,16 @@ _      __     ___     _    _        ______  _____     ___
 <body>
 
   <div id="EHLO">
-    <h1 class="ehlo">
-      hello<i class="font-icon">&#xe800;</i>irkfap.com
-    </h1>
-    <h1 class="ehlo blend">
-      hello<span class="invisible">@</span>irkfap.com
-    </h1>
+
+    <div class="wrapper">
+      <h1 class="ehlo">
+        hello<i class="font-icon">&#xe800;</i>irkfap.com
+      </h1>
+      <h1 class="ehlo blend">
+        hello<span class="invisible">@</span>irkfap.com
+      </h1>
+    </div>
+
     <h2>
       Follow us on Twitter: <a href="https://twitter.com/irkfap"><i class="font-icon">&#xe800;</i>irkfap</a>
     </h2>
