@@ -160,19 +160,33 @@ _      __     ___     _    _        ______  _____     ___
 
       will-change: opacity;
       transform: translateZ(0);
+      /*font-kerning: none;*/
     }
     .ehlo .font-icon {
       font-size: 0.6375em; /* 76.5pt / 120pt */
       margin-left: .1em;
       margin-right: .1em;
+      /*margin-right: .17em;*/
       /* emulate negative baseline-shift */
       position: relative;
       top: -0.02em;
     }
 
-    .ehlo.blend {
-      left: -0.07em;
+    .blend {
+      speak: never;
+      user-select: none;
       mix-blend-mode: difference;
+
+      /*left: -0.07em;*/
+    }
+
+    .blend .left {
+      position: relative;
+      left: 0.07em;
+    }
+    .blend .right {
+      position: relative;
+      right: 0.07em;
     }
 
     .invisible {
@@ -199,9 +213,9 @@ _      __     ___     _    _        ______  _____     ___
       <h1 class="ehlo">
         hello<i class="font-icon">&#xe800;</i>irkfap.com
       </h1>
-      <h1 class="ehlo blend">
-        hello<span class="invisible">@</span>irkfap.com
-      </h1>
+      <div class="ehlo blend">
+        <span class="left">hello</span><span class="invisible">@</span><span class="right">irkfap.com</span>
+      </div>
     </div>
 
     <h2>
