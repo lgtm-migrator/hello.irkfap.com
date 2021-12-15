@@ -49,7 +49,7 @@ _      __     ___     _    _        ______  _____     ___
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bellota+Text:wght@700&family=Outfit:wght@300&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bellota+Text:wght@700&family=Outfit:wght@280;300&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
     html, body {
@@ -76,8 +76,6 @@ _      __     ___     _    _        ______  _____     ___
       vertical-align: middle;
 
       background: rgb(255, 255, 255);
-      will-change: opacity;
-      transform: translateZ(0);
     }
     #EHLO svg, #EHLO img {
       object-fit: contain;
@@ -149,7 +147,7 @@ _      __     ___     _    _        ______  _____     ___
       margin: 0;
       font-family: 'Outfit', sans-serif;
       font-weight: 300;
-      font-size: 11em;
+      font-size: 11.18em;
       text-align: center;
       line-height: 1em;
 
@@ -158,9 +156,7 @@ _      __     ___     _    _        ______  _____     ___
       display: block;
       position: absolute;
 
-      will-change: opacity;
-      transform: translateZ(0);
-      /*font-kerning: none;*/
+      font-kerning: normal;
     }
     .ehlo .font-icon {
       font-size: 0.6375em; /* 76.5pt / 120pt */
@@ -174,7 +170,10 @@ _      __     ___     _    _        ______  _____     ___
 
     .blend {
       speak: never;
-      user-select: none;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
       mix-blend-mode: difference;
 
       /*left: -0.07em;*/
@@ -191,6 +190,20 @@ _      __     ___     _    _        ______  _____     ___
 
     .invisible {
       visibility: hidden;
+      /*margin-right: .04em;*/
+    }
+
+    @supports (font-variation-settings: 'wght' 280) {
+      .ehlo {
+        font-size: 11.2em;
+        font-weight: 280;
+      }
+      .blend .left {
+        left: 0.068em;
+      }
+      .blend .right {
+        right: 0.068em;
+      }
     }
 
     @media (color-gamut: p3) {
