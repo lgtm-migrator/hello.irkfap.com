@@ -2,8 +2,8 @@
   <defs>
     <style>
       text {
-        font-family:Outfit;
-        font-weight:280;
+        font-family:'Outfit-Light','Outfit';
+        font-weight:300;
         font-size:275px;
         fill:red;
       }
@@ -25,23 +25,23 @@
     </symbol>
   </defs>
   <path fill="#fff" d="M0 0h6400v1600H0z"/>
-  <g filter="url(#blendRight)" transform="matrix(2.61779,0,0,2.61779,526.309,987.02)">
-    <text x="-16.817px">h</text>
-    <text x="133.631px">e</text>
-    <text x="279.953px">l</text>
-    <text x="337.986px">l</text>
-    <text x="393.27px">o</text>
+  <g filter="url(#blendRight)" transform="translate(526.3 987) scale(2.61779)">
+    <text x="-16.8">h</text>
+    <text x="133.6">e</text>
+    <text x="280">l</text>
+    <text x="338">l</text>
+    <text x="393.3">o</text>
   </g>
-  <g filter="url(#blendLeft)" transform="matrix(2.61779,0,0,2.61779,2512.47,987.02)">
-    <text x="0px">i</text>
-    <text x="58.309px">r</text>
-    <text x="168.875px">k</text>
-    <text x="289.068px">f</text>
-    <text x="389.733px">a</text>
-    <text x="548.982px">p</text>
-    <text x="702.73px">.</text>
-    <text x="776.441px">c<tspan x="909.836px">o</tspan></text>
-    <text x="1064.68px">m</text>
+  <g filter="url(#blendLeft)" transform="translate(2512.5 987) scale(2.61779)">
+    <text>i</text>
+    <text x="58.3">r</text>
+    <text x="168.9">k</text>
+    <text x="289.1">f</text>
+    <text x="389.7">a</text>
+    <text x="549">p</text>
+    <text x="702.7">.</text>
+    <text x="776.4">c<tspan x="909.8">o</tspan></text>
+    <text x="1064.7">m</text>
   </g>
-  <path fill="red" d="M2239.19,588.263C2107.56,588.263 2009.49,687.593 2009.49,819.226C2009.49,948.361 2107.57,1047.69 2239.19,1047.69C2370.81,1047.69 2468.89,948.361 2468.89,819.226C2468.91,687.593 2370.83,588.263 2239.19,588.263ZM2391.06,876.45L2297.17,801.387L2341.15,749.132L2248.04,733.818L2166.68,831.231L2228.77,883.542L2266.49,838.72L2355.68,917.293C2293.2,969.582 2196.35,974.696 2130.57,924.782L2094.2,968.291C1986.33,864.278 2023.26,669.323 2169.55,622.31C2249.47,597.999 2337.58,622.014 2388.27,688.404C2425.51,743.308 2425.76,819.26 2391.06,876.45Z"/>
+  <path fill="red" d="M2239.2 588.3c-131.6 0-229.7 99.3-229.7 231 0 129 98 228.4 229.7 228.4 131.6 0 229.7-99.3 229.7-228.5 0-131.6-98-231-229.7-231ZM2391 876.5l-94-75.1 44-52.3-93-15.3-81.4 97.4 62 52.3 37.8-44.8 89.2 78.6c-62.5 52.3-159.3 57.4-225.1 7.5l-36.4 43.5c-107.9-104-71-299 75.4-346 79.9-24.3 168-.3 218.7 66.1 37.2 55 37.5 130.9 2.8 188Z"/>
 </svg>
