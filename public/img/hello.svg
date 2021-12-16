@@ -6,14 +6,13 @@
         fill: color(display-p3 1 0 0);
       }
     </style>
-    <!-- https://twitter.com/iconfu/status/979370028087828480?s=20 -->
-    <filter id="blendShiftRight" color-interpolation-filters="sRGB">
+    <filter id="blendShiftRight" color-interpolation-filters="linearRGB">
       <feFlood flood-color="#fff"/>
       <feBlend in="SourceGraphic" result="orig"/>
       <feOffset in="SourceGraphic" dx="50.8"/>
       <feBlend in="orig" mode="difference"/>
     </filter>
-    <filter id="blendShiftLeft" color-interpolation-filters="sRGB">
+    <filter id="blendShiftLeft" color-interpolation-filters="linearRGB">
       <feFlood flood-color="#fff"/>
       <feComposite in="SourceGraphic" result="orig"/>
       <feOffset in="SourceGraphic" dx="-50.8"/>

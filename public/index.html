@@ -58,7 +58,7 @@ _      __     ___     _    _        ______  _____     ___
       font-family: 'Raleway', sans-serif;
     }
     body {
-      background-color: white;
+      background: rgb(255,255,255);
       margin: 0;
       display: table;
     }
@@ -71,7 +71,7 @@ _      __     ___     _    _        ______  _____     ___
       text-align: center;
       vertical-align: middle;
 
-      background: white;
+      background: rgb(255,255,255);
     }
     #EHLO svg, #EHLO img {
       object-fit: contain;
@@ -134,7 +134,7 @@ _      __     ___     _    _        ______  _____     ___
       font-weight: 300;
       font-size: 11.18vw;
 
-      color: red;
+      color: rgb(255,0,0);
 
       font-kerning: normal;
       overflow: hidden;
@@ -235,18 +235,37 @@ _      __     ___     _    _        ______  _____     ___
       try {
         // result = window.getComputedStyle(document.body).mixBlendMode === 'normal'
         // result = ('backgroundBlendMode' in document.body.style);
+        // Narrow filter down to exclude browsers without CSS @supports API:
         result = window.CSS.supports('mix-blend-mode', 'difference');
+
+        // There is an issue with wrong colors rendered in mix-blend-mode
+        // in Chrome-based browsers in Mac OS (Windows is fine).
+        // When filter product is rgb(0, 255, 255), it is rendered as rgb(0, 207, 223).
+        // I guess it is impossible to do a feature-detection in that case :-(
+        if (typeof window.chrome !== 'undefined' && navigator.appVersion.indexOf('Mac OS') !== -1) {
+          result = false;
+        }
       } catch(e) {}
       return result;
     }
 
-    if (!isSvgFilterSupported()) {
-      var ehlo = document.getElementById('EHLO');
-      ehlo.className = 'no-svg-filters';
+    // Year 2022 and we are still have to write additional logic for cross-browser support 🤬
+    // Who would guess that simple blend mode filters will render in three different ways in current browsers.
+    if (!isMixBlendModeSupported()) {
+      var container = document.getElementById('EHLO');
+      var elReplace = container.getElementsByTagName('h1')[0];
+      container.className = 'no-mix-blend-mode';
+
       var img = document.createElement('img');
-      img.src = 'img/hello.png';
       img.alt = 'hello ☭ irkfap · com';
-      ehlo.replaceChild(img, ehlo.getElementsByTagName('svg')[0]);
+      if (isSvgFilterSupported()) {
+        img.src = './img/hello.svg';
+      } else {
+        container.className = 'no-svg-filters';
+        img.src = './img/hello.png';
+      }
+
+      container.replaceChild(img, elReplace);
     }
   </script>
 
