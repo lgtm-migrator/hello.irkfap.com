@@ -227,6 +227,16 @@ _      __     ___     _    _        ______  _____     ___
       return result;
     }
 
+    function isMixBlendModeSupported() {
+      var result = false;
+      try {
+        // result = window.getComputedStyle(document.body).mixBlendMode === 'normal'
+        // result = ('backgroundBlendMode' in document.body.style);
+        result = window.CSS.supports('mix-blend-mode', 'difference');
+      } catch(e) {}
+      return result;
+    }
+
     if (!isSvgFilterSupported()) {
       var ehlo = document.getElementById('EHLO');
       ehlo.className = 'no-svg-filters';
