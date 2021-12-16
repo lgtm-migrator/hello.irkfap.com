@@ -2,43 +2,46 @@
   <defs>
     <style>
       text {
-        font-family:'Outfit-Light', 'Outfit';
-        font-weight:100;
-        font-size:275.041px;
-        fill:rgb(255,0,0);        
+        font-family:Outfit;
+        font-weight:280;
+        font-size:275px;
+        fill:red;
       }
     </style>
     <filter id="blendRight">
       <feFlood flood-color="#fff" result="bg"/>
       <feComposite in="SourceGraphic" in2="bg" result="orig"/>
-      <feOffset in="SourceGraphic" dx="19.4" result="shifted"/>
+      <feOffset in="SourceGraphic" dx="50.8" result="shifted"/>
       <feBlend in="orig" in2="shifted" mode="difference"/>
     </filter>
     <filter id="blendLeft">
       <feFlood flood-color="#fff" result="bg"/>
       <feComposite in="SourceGraphic" in2="bg" result="orig"/>
-      <feOffset in="SourceGraphic" dx="-19.4" result="shifted"/>
+      <feOffset in="SourceGraphic" dx="-50.8" result="shifted"/>
       <feBlend in="orig" in2="shifted" mode="difference"/>
     </filter>
     <symbol id="hello">
 
     </symbol>
   </defs>
-  <rect fill="white" x="0" y="0" width="6400" height="1600"/>
-  <g transform="matrix(2.61779,0,0,2.61779,486.917,985.157)" filter="url(#blendRight)">
-    <text x="-19.567px">h</text>
-    <text x="130.88px">e</text>
-    <text x="277.202px">l<tspan x="335.236px">l</tspan></text>
-    <text x="393.27px">o</text>
+  <path fill="#fff" d="M0 0h6400v1600H0z"/>
+  <g filter="url(#blendRight)">
+    <text transform="translate(479 987) scale(2.61779)">h</text>
+    <text transform="translate(873 987) scale(2.61779)">e</text>
+    <text transform="translate(1256 987) scale(2.61779)">l</text>
+    <text transform="translate(1407 987) scale(2.61779)">l</text>
+    <text transform="translate(1559 987) scale(2.61779)">o</text>
   </g>
-  <g transform="matrix(2.61779,0,0,2.61779,2473.08,985.157)" filter="url(#blendLeft)">
-    <text x="0px">i</text>
-    <text x="58.309px">r<tspan x="166.125px">k</tspan></text>
-    <text x="289.068px">f</text>
-    <text x="386.983px">a</text>
-    <text x="548.982px">p</text>
-    <text x="702.73px">.<tspan x="776.441px">c</tspan></text>
-    <text x="907.086px" >om</text>
+  <g filter="url(#blendLeft)">
+    <text transform="translate(2516 987) scale(2.61779)">i</text>
+    <text transform="translate(2669 987) scale(2.61779)">r</text>
+    <text transform="translate(2951 987) scale(2.61779)">k</text>
+    <text transform="translate(3273 987) scale(2.61779)">f</text>
+    <text transform="translate(3529 987) scale(2.61779)">a</text>
+    <text transform="translate(3953 987) scale(2.61779)">p</text>
+    <text transform="translate(4356 987) scale(2.61779)">.</text>
+    <text transform="translate(4549 987) scale(2.61779)">c</text>
+    <text transform="translate(4891 987) scale(2.61779)">om</text>
   </g>
-  <path fill="red" d="M2199.8,586.4C2068.17,586.4 1970.1,685.73 1970.1,817.363C1970.1,946.498 2068.18,1045.83 2199.8,1045.83C2331.42,1045.83 2429.5,946.498 2429.5,817.363C2429.52,685.73 2331.43,586.4 2199.8,586.4ZM2351.67,874.587L2257.78,799.524L2301.76,747.268L2208.65,731.955L2127.28,829.368L2189.38,881.679L2227.1,836.857L2316.29,915.43C2253.81,967.719 2156.96,972.833 2091.18,922.919L2054.8,966.428C1946.94,862.414 1983.87,667.46 2130.16,620.447C2210.08,596.136 2298.18,620.151 2348.88,686.54C2386.12,741.445 2386.37,817.397 2351.67,874.587Z"/>
+  <path fill="red" fill-rule="nonzero" d="M2243 588a225 225 0 0 0-230 231c0 129 98 229 230 229 131 0 229-100 229-229 1-131-98-231-229-231Zm152 288-94-75 44-52-93-15-82 97 62 53 38-45 89 78c-62 53-159 58-225 8l-36 43c-108-104-71-299 75-346 80-24 168 0 219 66 37 55 37 131 3 188Z"/>
 </svg>
