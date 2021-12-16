@@ -174,6 +174,25 @@ _      __     ___     _    _        ______  _____     ___
 
     .invisible {
       visibility: hidden;
+      width: 0.767em;
+      display: inline-block;
+    }
+
+    .twitter {
+      font-size: 2.04em;
+    }
+    .twitter .font-icon.tw {
+      margin: 0;
+
+    }
+    .twitter .font-icon {
+      font-size: 0.8em;
+    }
+
+    /*noinspection CssOverwrittenProperties*/
+    .twitter a, .twitter a:visited {
+      color: darkred;
+      color: lch(28.758% 132 39.753);
     }
 
     @supports (font-variation-settings: 'wght' 280) {
@@ -208,12 +227,12 @@ _      __     ___     _    _        ______  _____     ___
     <h1 class="ehlo">
       <span>hello<i class="font-icon" aria-label="at">&#xe800;</i>irkfap.com</span>
       <div class="blend" aria-hidden="true">
-        <span class="left">hello</span><span class="invisible">@</span><span class="right">irkfap.com</span>
+        <span class="left">hello</span><span class="invisible">&nbsp;</span><span class="right">irkfap.com</span>
       </div>
     </h1>
 
-    <h2>
-      Follow us on <!--i class="font-icon">&#xf099;</i-->Twitter: <a href="https://twitter.com/irkfap"><i class="font-icon">&#xe800;</i>irkfap</a>
+    <h2 class="twitter">
+      Follo<i class="font-icon tw">&#xf099;</i> us on twitter: <a href="https://twitter.com/irkfap"><i class="font-icon">&#xe800;</i>irkfap</a>
     </h2>
   </div>
 
