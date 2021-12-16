@@ -1,0 +1,44 @@
+<svg width="100%" height="100%" viewBox="0 0 6400 1600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      text {
+        font-family:'Outfit-Light', 'Outfit';
+        font-weight:100;
+        font-size:275.041px;
+        fill:rgb(255,0,0);        
+      }
+    </style>
+    <filter id="blendRight">
+      <feFlood flood-color="#fff" result="bg"/>
+      <feComposite in="SourceGraphic" in2="bg" result="orig"/>
+      <feOffset in="SourceGraphic" dx="19.4" result="shifted"/>
+      <feBlend in="orig" in2="shifted" mode="difference"/>
+    </filter>
+    <filter id="blendLeft">
+      <feFlood flood-color="#fff" result="bg"/>
+      <feComposite in="SourceGraphic" in2="bg" result="orig"/>
+      <feOffset in="SourceGraphic" dx="-19.4" result="shifted"/>
+      <feBlend in="orig" in2="shifted" mode="difference"/>
+    </filter>
+    <symbol id="hello">
+
+    </symbol>
+  </defs>
+  <rect fill="white" x="0" y="0" width="6400" height="1600"/>
+  <g transform="matrix(2.61779,0,0,2.61779,486.917,985.157)" filter="url(#blendRight)">
+    <text x="-19.567px">h</text>
+    <text x="130.88px">e</text>
+    <text x="277.202px">l<tspan x="335.236px">l</tspan></text>
+    <text x="393.27px">o</text>
+  </g>
+  <g transform="matrix(2.61779,0,0,2.61779,2473.08,985.157)" filter="url(#blendLeft)">
+    <text x="0px">i</text>
+    <text x="58.309px">r<tspan x="166.125px">k</tspan></text>
+    <text x="289.068px">f</text>
+    <text x="386.983px">a</text>
+    <text x="548.982px">p</text>
+    <text x="702.73px">.<tspan x="776.441px">c</tspan></text>
+    <text x="907.086px" >om</text>
+  </g>
+  <path fill="red" d="M2199.8,586.4C2068.17,586.4 1970.1,685.73 1970.1,817.363C1970.1,946.498 2068.18,1045.83 2199.8,1045.83C2331.42,1045.83 2429.5,946.498 2429.5,817.363C2429.52,685.73 2331.43,586.4 2199.8,586.4ZM2351.67,874.587L2257.78,799.524L2301.76,747.268L2208.65,731.955L2127.28,829.368L2189.38,881.679L2227.1,836.857L2316.29,915.43C2253.81,967.719 2156.96,972.833 2091.18,922.919L2054.8,966.428C1946.94,862.414 1983.87,667.46 2130.16,620.447C2210.08,596.136 2298.18,620.151 2348.88,686.54C2386.12,741.445 2386.37,817.397 2351.67,874.587Z"/>
+</svg>
