@@ -1,4 +1,12 @@
+# Hosted entirely from static files
+# PHP runtime is used just because it is fastest in deployment (more or less)
 runtime: php74
+
+# Required for gcloud --quiet app versions migrate:
+# Warmup requests must be enabled for all versions that will gain additional
+# traffic as a result of the traffic migration.
+inbound_services:
+  - warmup
 
 includes:
 - routes.yaml
