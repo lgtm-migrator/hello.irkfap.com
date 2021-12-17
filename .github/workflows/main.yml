@@ -1,18 +1,55 @@
 name: app-engine
 
+env:
+  GCLOUD_PROJECT_ID: hello-irkfap-com
+
 on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
 
 jobs:
-  deploy-gae:
-    name: App Engine Deployment
+
+  cancel-previous:
+    name: Cancel Previous Jobs
+    # Skip workflow entirely for [skip ci] commits
+    if: |
+      false == contains(github.event.commits[0].message, '[skip ci]') &&
+      false == contains(github.event.commits[0].message, '[no ci]')
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+  deploy-gae:
+    name: App Engine Deployment
+    # Skip workflow entirely for [skip ci] commits
+    if: |
+      false == contains(github.event.commits[0].message, '[skip ci]') &&
+      false == contains(github.event.commits[0].message, '[no ci]')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+
+      - uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.16.0
+          run_install: |
+            - args: [--frozen-lockfile]
 
       - name: Import config.yaml
         run: echo "${{ secrets.CONFIG_YAML }}" | base64 -d > config.yaml
@@ -27,6 +64,33 @@ jobs:
           --key-file=/tmp/auth.json \
           --project="${{ secrets.GCLOUD_PROJECT_ID }}"
 
+      - name: Generate static route handlers
+        run: yarn static
+
       - name: Deploy
         run: |
-          pnpm deploy --no-promote --version "${GITHUB_ACTOR}-${GITHUB_SHA:0:7}"
+          gcloud app deploy static.yaml --quiet --project="${GCLOUD_PROJECT_ID}" --no-promote --version="${GITHUB_ACTOR}-${GITHUB_SHA:0:7}"
+
+  production:
+    name: Update Production
+    environment: production
+    runs-on: ubuntu-latest
+    # Run only after successful deployment and Lighthouse audit
+    needs: [deploy-gae]
+    # Run only on push to master
+    if: ${{ success() && github.ref == 'refs/heads/main' }}
+
+    steps:
+      - name: Import Service Account key
+        run: echo "${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}" | base64 -d > /tmp/auth.json
+
+      - name: GCloud Auth
+        run: |
+          gcloud --quiet auth \
+          activate-service-account "${{ secrets.GCP_SA_EMAIL }}" \
+          --key-file=/tmp/auth.json \
+          --project="${GCLOUD_PROJECT_ID}"
+
+      - name: Promote deployed version to production
+        run: |
+          gcloud --quiet app versions migrate "${GITHUB_ACTOR//[\[\]]/}-${GITHUB_SHA:0:7}" --service=default
