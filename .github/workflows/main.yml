@@ -69,7 +69,7 @@ jobs:
 
       - name: Deploy
         run: |
-          gcloud app deploy static.yaml --quiet --project="${GCLOUD_PROJECT_ID}" --no-promote --version="${GITHUB_ACTOR}-${GITHUB_SHA:0:7}"
+          gcloud app deploy static.yaml --quiet --project="${GCLOUD_PROJECT_ID}" --no-promote --version="${GITHUB_ACTOR//[\[\]]/}-${GITHUB_SHA:0:7}"
 
   production:
     name: Update Production
