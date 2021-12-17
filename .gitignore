@@ -26,3 +26,9 @@ dist/
 config.yaml
 routes.yaml
 
+# JetBrains
+/.idea/
+/.ijwb/
+
+# MacOS
+.DS_Store
