@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "pnpm static && gcloud app deploy static.yaml --quiet --project=hello-irkfap-com",
+    "deploy": "pnpm static && gcloud app deploy static.yaml",
     "static": "tsc -p scripts && node -r source-map-support/register scripts/dist/make-static-handlers",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
