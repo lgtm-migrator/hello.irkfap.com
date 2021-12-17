@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy": "pnpm exec static && gcloud --quiet app deploy static.yaml --no-promote --project=hello-irkfap-com",
+    "deploy": "pnpm static && gcloud app deploy static.yaml --quiet --project=hello-irkfap-com",
     "static": "tsc -p scripts && node -r source-map-support/register scripts/dist/make-static-handlers",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/siberex/hello.irkfap.com.git"

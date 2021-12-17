@@ -3,7 +3,7 @@ name: app-engine
 on:
   push:
     branches:
-      - main-kampf
+      - main
 
 jobs:
   deploy-gae:
@@ -29,4 +29,4 @@ jobs:
 
       - name: Deploy
         run: |
-          gcloud app deploy app.yaml --quiet -v "${GITHUB_ACTOR}-${GITHUB_SHA:0:7}"
+          pnpm deploy --no-promote --version "${GITHUB_ACTOR}-${GITHUB_SHA:0:7}"

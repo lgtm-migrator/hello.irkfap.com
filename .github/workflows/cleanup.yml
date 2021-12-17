@@ -1,7 +1,7 @@
 name: gcloud-cleanup
 
 env:
-  GCLOUD_PROJECT_ID: irkfap-com
+  GCLOUD_PROJECT_ID: hello-irkfap-com
 
 on:
   schedule:

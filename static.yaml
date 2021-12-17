@@ -1,5 +1,4 @@
 runtime: php74
 
 includes:
-- config.yaml
 - routes.yaml
