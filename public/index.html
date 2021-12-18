@@ -49,7 +49,7 @@ _      __     ___     _    _        ______  _____     ___
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bellota+Text:wght@700&family=Outfit:wght@280;300&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bellota+Text:wght@400;700&family=Outfit:wght@280;300&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
     html, body {
@@ -63,8 +63,12 @@ _      __     ___     _    _        ______  _____     ___
       display: table;
     }
     h1,h2,h3,h4,h5,h6 {
-      font-family: 'Bellota Text', cursive;
+      font-family: 'Bellota Text', sans-serif;
     }
+    .nobr {
+      white-space: nowrap;
+    }
+
     #EHLO {
       width: 100%;
       display: table-cell;
@@ -181,6 +185,18 @@ _      __     ___     _    _        ______  _____     ___
     .twitter {
       font-size: 2.04em;
     }
+
+    @media only screen and (max-width: 667px) {
+      .twitter {
+        font-weight: 400;
+      }
+    }
+    @media only screen and (max-width: 540px) {
+      .twitter {
+        font-size: 1.56em;
+      }
+    }
+
     .twitter .font-icon.tw {
       margin: 0;
 
@@ -226,13 +242,14 @@ _      __     ___     _    _        ______  _____     ___
 
     <h1 class="ehlo">
       <span>hello<i class="font-icon" aria-label="at">&#xe800;</i>irkfap.com</span>
-      <div class="blend" aria-hidden="true">
+      <span class="blend" aria-hidden="true">
         <span class="left">hello</span><span class="invisible">&nbsp;</span><span class="right">irkfap.com</span>
-      </div>
+      </span>
     </h1>
 
     <h2 class="twitter">
-      Follo<i class="font-icon tw">&#xf099;</i> us on twitter: <a href="https://twitter.com/irkfap"><i class="font-icon">&#xe800;</i>irkfap</a>
+      Follow us on <span class="nobr" aria-label="Twitter">t<i class="font-icon tw">&#xf099;</i>itter</span>:
+      <a href="https://twitter.com/irkfap" class="nobr"><i class="font-icon" aria-label="at">&#xe800;</i>irkfap</a>
     </h2>
   </div>
 
@@ -269,7 +286,7 @@ _      __     ___     _    _        ______  _____     ___
     }
 
     // Year 2022 and we are still have to write additional logic for cross-browser support 🤬
-    // Who would guess that simple blend mode filters will render in three different ways in current browsers.
+    // Who would guess that simple blend mode filters will render three different ways in current browsers.
     if (!isMixBlendModeSupported()) {
       var container = document.getElementById('EHLO');
       var elReplace = container.getElementsByTagName('h1')[0];
