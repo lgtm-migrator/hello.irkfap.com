@@ -59,6 +59,9 @@ _      __     ___     _    _        ______  _____     ___
       font-family: 'Raleway', sans-serif;
     }
     body {
+      background: lightyellow;
+      background: linear-gradient(180deg, lightcyan 0%, mistyrose 100%);
+
       margin: 0;
       display: table;
     }
@@ -137,11 +140,12 @@ _      __     ___     _    _        ______  _____     ___
       font-weight: 300;
       font-size: 11.18vw;
 
-      background: white;
-      color: rgb(255,0,0);
+      color: red;
 
       font-kerning: normal;
       overflow: hidden;
+
+      isolation: isolate;
     }
     .ehlo .font-icon {
       font-size: 0.6375em; /* 76.5pt / 120pt */
@@ -159,7 +163,8 @@ _      __     ___     _    _        ______  _____     ___
           -ms-user-select: none;
               user-select: none;
 
-      mix-blend-mode: difference;
+      mix-blend-mode: darken;
+      color: cyan;
 
       display: inline-block;
       position: absolute;
@@ -184,6 +189,7 @@ _      __     ___     _    _        ______  _____     ___
 
     .twitter {
       font-size: 2.04em;
+      color: rgb(32,32,43);
     }
 
     @media only screen and (max-width: 1024px) {
@@ -207,8 +213,7 @@ _      __     ___     _    _        ______  _____     ___
 
     /*noinspection CssOverwrittenProperties*/
     .twitter a, .twitter a:visited {
-      color: darkred;
-      color: lch(28.758% 132 39.753);
+      color: firebrick;
     }
 
     @supports (font-variation-settings: 'wght' 280) {
@@ -241,6 +246,9 @@ _      __     ___     _    _        ______  _____     ___
     @media (color-gamut: p3) {
       .ehlo {
         color: color(display-p3 1 0 0);
+      }
+      .blend {
+        color: color(display-p3 0 1 1);
       }
     }
   </style>
@@ -288,6 +296,7 @@ _      __     ___     _    _        ______  _____     ___
         // in Chrome-based browsers in Mac OS (Windows is fine).
         // When filter product is rgb(0, 255, 255), it is rendered as rgb(0, 207, 223).
         // I guess it is impossible to do a feature-detection in that case :-(
+        // FIXME: target P3, not Mac OS
         // noinspection JSDeprecatedSymbols
         if (typeof window.chrome !== 'undefined'
               && typeof navigator.appVersion === "string"
@@ -299,7 +308,7 @@ _      __     ___     _    _        ______  _____     ___
     }
 
     // Year 2022 and we are still have to write additional logic for cross-browser support 🤬
-    // Who would guess that simple blend mode filters will render three different ways in current browsers.
+    // https://github.com/siberex/blend-mode-issues
     if (!isMixBlendModeSupported()) {
       var container = document.getElementById('EHLO');
       var elReplace = container.getElementsByTagName('h1')[0];

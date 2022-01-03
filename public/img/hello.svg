@@ -5,7 +5,7 @@
   <defs>
     <style type="text/css"><![CDATA[
       path {
-        fill: rgb(255, 0, 0);
+        fill: red;
         fill: color(display-p3 1 0 0);
       }
     ]]></style>
@@ -14,13 +14,13 @@
       <feComposite operator="in" in="cyan-bg" in2="SourceGraphic" result="cyan"/> <!-- paint source shape to cyan -->
       <feOffset in="cyan" dx="50.8" result="shift"/> <!-- shift re-painted shape to the right -->
 
-      <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/blend-mode -->
       <feBlend in="SourceGraphic" in2="shift" mode="multiply" result="multiply"/>
-      <!-- multiply and darken are both badly supported by Chrome 96: -->
-      <!--   darken(ff0000,00ffff) gives rgb(126,46,29) for both linearRGB and sRGB color-interpolation-filters -->
-      <!--   multiply(red,cyan) gives rgb(115,46,30), but expected all black, due to multiplication by zero in each channel -->
+      <!-- multiply and darken are both badly supported by Chrome 96:
+           darken(red,cyan) gives rgb(126,46,29) for both linearRGB and sRGB color-interpolation-filters
+           multiply(red,cyan) gives rgb(115,46,30), but (0,0,0) is expected -->
 
-      <!-- color-burn is not supported by Safari 15.1, despite SVGFEBlendElement.SVG_FEBLEND_MODE_COLOR_BURN is present -->
+      <!-- color-burn is not supported by Safari 15.2, despite SVGFEBlendElement.SVG_FEBLEND_MODE_COLOR_BURN is present
+           https://github.com/siberex/blend-mode-issues -->
       <feBlend in="SourceGraphic" in2="shift" mode="color-burn" result="burn"/>
       <feBlend in="multiply" in2="burn" mode="darken"/> <!-- use darker of two to support both browsers  -->
     </filter>
