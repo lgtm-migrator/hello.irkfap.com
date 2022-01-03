@@ -79,13 +79,14 @@ _      __     ___     _    _        ______  _____     ___
       text-align: center;
       vertical-align: middle;
     }
-    #EHLO svg, #EHLO img {
+
+    /*noinspection CssOverwrittenProperties*/
+    #EHLO > img {
       object-fit: contain;
       width: 100%;
-    }
 
-    #EHLO svg {
-      all: unset;
+      margin-bottom: 5%;
+      margin-bottom: 5vw;
     }
 
     @font-face {
@@ -135,10 +136,13 @@ _      __     ___     _    _        ______  _____     ___
     }
 
     .ehlo {
-      margin: 0.38em auto 0.72em auto;
       font-family: 'Outfit', sans-serif;
       font-weight: 300;
       font-size: 11.18vw;
+      line-height: 1.26em;
+
+      margin-block-start: 0;
+      margin-block-end: 0.6em;
 
       color: red;
 
@@ -194,12 +198,13 @@ _      __     ___     _    _        ______  _____     ___
 
     @media only screen and (max-width: 1024px) {
       .twitter {
+        font-size: 1.95em;
         font-weight: 400;
       }
     }
     @media only screen and (max-width: 540px) {
       .twitter {
-        font-size: 1.56em;
+        font-size: 1.86em;
       }
     }
 
@@ -215,7 +220,7 @@ _      __     ___     _    _        ______  _____     ___
       color: firebrick;
 
       text-decoration: underline;
-      text-decoration-thickness: 1.5pt;
+      text-decoration-thickness: 0.07em;
       text-underline-position: under;
     }
 
@@ -226,7 +231,7 @@ _      __     ___     _    _        ______  _____     ___
     }
 
     .twitter a:focus {
-      outline: thin solid #1993D0 ;
+      outline: thin solid #1993D0;
     }
 
     @supports (font-variation-settings: 'wght' 280) {
