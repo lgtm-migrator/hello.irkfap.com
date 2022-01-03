@@ -189,7 +189,7 @@ _      __     ___     _    _        ______  _____     ___
 
     .twitter {
       font-size: 2.04em;
-      color: rgb(32,32,43);
+      color: #2D333D;
     }
 
     @media only screen and (max-width: 1024px) {
@@ -211,9 +211,22 @@ _      __     ___     _    _        ______  _____     ___
       font-size: 0.8em;
     }
 
-    /*noinspection CssOverwrittenProperties*/
     .twitter a, .twitter a:visited {
       color: firebrick;
+
+      text-decoration: underline;
+      text-decoration-thickness: 1.5pt;
+      text-underline-position: under;
+    }
+
+    .twitter a:hover,
+    .twitter a:focus {
+      color: red;
+      color: color(display-p3 1 0 0);
+    }
+
+    .twitter a:focus {
+      outline: thin solid #1993D0 ;
     }
 
     @supports (font-variation-settings: 'wght' 280) {
@@ -230,8 +243,16 @@ _      __     ___     _    _        ______  _____     ___
     }
 
     @media print {
+      body {
+        background: white;
+      }
+
       .ehlo {
         font-size: 5.5em;
+      }
+
+      .twitter {
+        font-size: 1.51em;
       }
 
       /* stylelint-disable-next-line selector-no-qualifying-type */
