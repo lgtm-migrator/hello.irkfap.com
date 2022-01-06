@@ -5,9 +5,9 @@
 *.md
 
 .editorconfig
-LICENSE
+LICENSE.*
 package.json
-tsconfig.json
+*config.json
 
 .gcloudignore
 .git
