@@ -28,6 +28,7 @@ routes.yaml
 
 # JetBrains
 /.idea/
+!/.idea/icon.svg
 /.ijwb/
 
 # MacOS
