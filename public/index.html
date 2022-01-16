@@ -354,6 +354,8 @@ _      __     ___     _    _        ______  _____     ___
       container.className = 'no-mix-blend-mode';
 
       var img = document.createElement('img');
+      img.width = 256;
+      img.height = 36;
       addEventListener(img, 'load', function() {
         container.replaceChild(img, elReplace);
       });

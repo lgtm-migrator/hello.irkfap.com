@@ -5,6 +5,7 @@
 *.md
 
 .editorconfig
+LICENSE
 LICENSE.*
 package.json
 *config.json
