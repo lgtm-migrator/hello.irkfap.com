@@ -334,15 +334,12 @@ _      __     ___     _    _        ______  _____     ___
         // Narrow filter down to exclude browsers without CSS @supports API:
         result = window.CSS.supports('mix-blend-mode', 'difference');
 
-        // There is an issue with wrong colors rendered in mix-blend-mode
-        // in Chrome-based browsers in Mac OS (Windows is fine).
-        // When filter product is rgb(0, 255, 255), it is rendered as rgb(0, 207, 223).
-        // I guess it is impossible to do a feature-detection in that case :-(
-        // FIXME: target P3, not Mac OS
-        // noinspection JSDeprecatedSymbols
-        if (typeof window.chrome !== 'undefined'
-              && typeof navigator.appVersion === "string"
-              && navigator.appVersion.indexOf('Mac OS') !== -1) {
+        // There is an issue with wrong colors rendered in mix-blend-mode in Chrome-based browsers
+        // when P3 gamut is supported (Mac OS retina, for example).
+        // When filter product should be rgb(0, 255, 255), it is rendered as rgb(0, 207, 223).
+        // Ref.: https://github.com/siberex/blend-mode-issues
+        if (typeof window['chrome'] !== 'undefined'
+              && window.matchMedia("(color-gamut: p3)").matches) {
           result = false;
         }
       } catch(e) {}
