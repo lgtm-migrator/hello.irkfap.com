@@ -306,70 +306,74 @@ _      __     ___     _    _        ______  _____     ___
 
   <!--suppress ES6ConvertVarToLetConst -->
   <script>
-    function addEventListener(el, eventName, handler) {
-      if (el.addEventListener) {
-        el.addEventListener(eventName, handler);
-      } else {
-        // noinspection JSUnresolvedFunction
-        el.attachEvent('on' + eventName, function() {
-          handler.call(el);
-        });
-      }
-    }
+    (function () {
 
-    // Check for support: SVG filter feBlend with mode="difference"
-    // https://github.com/Modernizr/Modernizr/pull/531
-    function isSvgFilterSupported() {
-      var result = false;
-      try {
-        result = typeof SVGFEBlendElement !== undefined &&
-          SVGFEBlendElement.SVG_FEBLEND_MODE_DIFFERENCE !== undefined;
-      } catch(e) {}
-      return result;
-    }
-
-    function isMixBlendModeSupported() {
-      var result = false;
-      try {
-        // result = window.getComputedStyle(document.body).mixBlendMode === 'normal'
-        // result = ('backgroundBlendMode' in document.body.style);
-        // Narrow filter down to exclude browsers without CSS @supports API:
-        result = window.CSS.supports('mix-blend-mode', 'difference');
-
-        // There is an issue with wrong colors rendered in mix-blend-mode in Chrome-based browsers
-        // when P3 gamut is supported (Mac OS retina, for example).
-        // When filter product should be rgb(0, 255, 255), it is rendered as rgb(0, 207, 223).
-        // Ref.: https://github.com/siberex/blend-mode-issues
-        if (typeof window['chrome'] !== 'undefined'
-              && window.matchMedia("(color-gamut: p3)").matches) {
-          result = false;
+      function addEventListener(el, eventName, handler) {
+        if (el.addEventListener) {
+          el.addEventListener(eventName, handler);
+        } else {
+          // noinspection JSUnresolvedFunction
+          el.attachEvent('on' + eventName, function() {
+            handler.call(el);
+          });
         }
-      } catch(e) {}
-      return result;
-    }
-
-    // Year 2022 and we are still have to write additional logic for cross-browser support 🤬
-    // https://github.com/siberex/blend-mode-issues
-    if (!isMixBlendModeSupported()) {
-      var container = document.getElementById('EHLO');
-      var elReplace = container.getElementsByTagName('h1')[0];
-      container.className = 'no-mix-blend-mode';
-
-      var img = document.createElement('img');
-      img.width = 256;
-      img.height = 36;
-      addEventListener(img, 'load', function() {
-        container.replaceChild(img, elReplace);
-      });
-
-      img.alt = 'hello ☭ irkfap · com';
-      if (isSvgFilterSupported()) {
-        img.src = '/img/hello.svg?v5';
-      } else {
-        container.className = 'no-svg-filters';
-        img.src = '/img/hello.png?v5';
       }
-    }
+
+      // Check for support: SVG filter feBlend with mode="difference"
+      // https://github.com/Modernizr/Modernizr/pull/531
+      function isSvgFilterSupported() {
+        var result = false;
+        try {
+          result = typeof SVGFEBlendElement !== undefined &&
+            SVGFEBlendElement.SVG_FEBLEND_MODE_DIFFERENCE !== undefined;
+        } catch(e) {}
+        return result;
+      }
+
+      function isMixBlendModeSupported() {
+        var result = false;
+        try {
+          // result = window.getComputedStyle(document.body).mixBlendMode === 'normal'
+          // result = ('backgroundBlendMode' in document.body.style);
+          // Narrow filter down to exclude browsers without CSS @supports API:
+          result = window.CSS.supports('mix-blend-mode', 'difference');
+
+          // There is an issue with wrong colors rendered in mix-blend-mode in Chrome-based browsers
+          // when P3 gamut is supported (Mac OS retina, for example).
+          // When filter product should be rgb(0, 255, 255), it is rendered as rgb(0, 207, 223).
+          // Ref.: https://github.com/siberex/blend-mode-issues
+          if (typeof window['chrome'] !== 'undefined'
+                && window.matchMedia("(color-gamut: p3)").matches) {
+            result = false;
+          }
+        } catch(e) {}
+        return result;
+      }
+
+      // Year 2022 and we are still have to write additional logic for cross-browser support 🤬
+      // https://github.com/siberex/blend-mode-issues
+      if (!isMixBlendModeSupported()) {
+        var container = document.getElementById('EHLO');
+        var elReplace = container.getElementsByTagName('h1')[0];
+        container.className = 'no-mix-blend-mode';
+
+        var img = document.createElement('img');
+        img.width = 256;
+        img.height = 36;
+        addEventListener(img, 'load', function() {
+          container.replaceChild(img, elReplace);
+        });
+
+        img.alt = 'hello ☭ irkfap · com';
+        if (isSvgFilterSupported()) {
+          img.src = '/img/hello.svg?v5';
+        } else {
+          container.className = 'no-svg-filters';
+          img.src = '/img/hello.png?v5';
+        }
+      }
+
+    })();
   </script>
 
 
