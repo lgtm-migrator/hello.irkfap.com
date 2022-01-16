@@ -63,8 +63,8 @@ _      __     ___     _    _        ______  _____     ___
       font-family: 'Raleway', sans-serif;
     }
     body {
-      background: lightyellow;
       background: linear-gradient(180deg, lightcyan 0%, mistyrose 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='lightcyan', endColorstr='mistyrose'); /* IE6-9 */
 
       margin: 0;
       display: table;
@@ -88,6 +88,7 @@ _      __     ___     _    _        ______  _____     ___
     #EHLO > img {
       object-fit: contain;
       width: 100%;
+      height: auto;
       min-height: 14.112vw; /* 11.2vw × 1.26em */
 
       margin-bottom: 5%;
